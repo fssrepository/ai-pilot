@@ -1,0 +1,33 @@
+{
+  "subtitle": "Research Documentation",
+  "kicker": "Representations & Learned Repair Selection",
+  "title": "Repair Graph v2\nRepair Selection",
+  "lead": "Fresh-instance tests of learned repair ranking, bounded composition and the full cost of prior repair experience.",
+  "metadata": [
+    [
+      "Document ID",
+      "AIP-003"
+    ],
+    [
+      "Document version",
+      "0.2.0"
+    ],
+    [
+      "Experiment",
+      "Repair policy pilot v2"
+    ],
+    [
+      "Status",
+      "Measured follow-up"
+    ],
+    [
+      "Released",
+      "2026-10-11"
+    ],
+    [
+      "Language",
+      "EN"
+    ]
+  ],
+  "brand": "AI Pilot"
+}

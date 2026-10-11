@@ -1,0 +1,349 @@
+{
+  "source_base_revision": "23aba455dafa1e396987bcc2c65497dc975c8de2",
+  "description": "Working-tree implementation; source hashes identify the implementation, not a claim that base HEAD contains it. main.cpp later added causal-mask and predict CLI checks without changing the training algorithm.",
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "libtorch": "2.8.0+cpu C++11 ABI, reused from existing wheel",
+  "llama_cpp": "b11429 / d81235049",
+  "self_test": {
+    "passed": true,
+    "exports": [
+      {
+        "name": "check-4",
+        "f32_max_logit_error": 5.36442e-07,
+        "f16_max_logit_error": 0.000259787,
+        "f16_bytes": 1592576
+      },
+      {
+        "name": "check-5",
+        "f32_max_logit_error": 9.53674e-07,
+        "f16_max_logit_error": 0.000313044,
+        "f16_bytes": 1921824
+      }
+    ]
+  },
+  "runs": [
+    {
+      "schema": 1,
+      "seed": 42,
+      "threads": 2,
+      "batch_size": 16,
+      "baseline_steps": 600,
+      "extra_steps_per_branch": 200,
+      "control_train_seconds": 3.37833878,
+      "growth_train_seconds": 5.9413686,
+      "proposal": "forced diagnostic; selection is rule-based",
+      "comparison": "equal update steps and examples, not equal CPU time",
+      "growth_accepted": true,
+      "selected_layers": 5,
+      "selected_parameters": 951680,
+      "initial_validation": {
+        "loss": 6.30991936,
+        "exact_accuracy": 0
+      },
+      "baseline_validation": {
+        "loss": 0.00191077951,
+        "exact_accuracy": 1
+      },
+      "control_validation": {
+        "loss": 0.00111210789,
+        "exact_accuracy": 1
+      },
+      "growth_validation": {
+        "loss": 0.000951146474,
+        "exact_accuracy": 1
+      },
+      "replay_retention_accuracy": 1,
+      "retention_scope": "training replay only; no separate old task yet",
+      "test": {
+        "loss": 0.000958582095,
+        "exact_accuracy": 1
+      },
+      "gguf_test_accuracy": 1,
+      "peak_rss_mib": 208.328125,
+      "exports": [
+        {
+          "name": "fixed-control",
+          "f32_max_logit_error": 2.86102e-06,
+          "f16_max_logit_error": 0.000677466,
+          "f16_bytes": 1592576
+        },
+        {
+          "name": "growth-candidate",
+          "f32_max_logit_error": 4.76837e-06,
+          "f16_max_logit_error": 0.000810862,
+          "f16_bytes": 1921824
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "x=1,y=0,a=L,b=1>",
+          "expected": "1,0;",
+          "predicted": "1,0;"
+        },
+        {
+          "prompt": "x=3,y=2,a=U,b=1>",
+          "expected": "3,2;",
+          "predicted": "3,2;"
+        },
+        {
+          "prompt": "x=2,y=3,a=R,b=1>",
+          "expected": "2,3;",
+          "predicted": "2,3;"
+        },
+        {
+          "prompt": "x=0,y=1,a=D,b=1>",
+          "expected": "0,1;",
+          "predicted": "0,1;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=1>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=1,y=2,a=R,b=1>",
+          "expected": "1,2;",
+          "predicted": "1,2;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=0>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=2,y=0,a=U,b=0>",
+          "expected": "2,1;",
+          "predicted": "2,1;"
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "seed": 43,
+      "threads": 2,
+      "batch_size": 16,
+      "baseline_steps": 600,
+      "extra_steps_per_branch": 200,
+      "control_train_seconds": 3.44862961,
+      "growth_train_seconds": 4.48242722,
+      "proposal": "forced diagnostic; selection is rule-based",
+      "comparison": "equal update steps and examples, not equal CPU time",
+      "growth_accepted": true,
+      "selected_layers": 5,
+      "selected_parameters": 951680,
+      "initial_validation": {
+        "loss": 6.22060966,
+        "exact_accuracy": 0
+      },
+      "baseline_validation": {
+        "loss": 0.001614301,
+        "exact_accuracy": 1
+      },
+      "control_validation": {
+        "loss": 0.000962466293,
+        "exact_accuracy": 1
+      },
+      "growth_validation": {
+        "loss": 0.000934937678,
+        "exact_accuracy": 1
+      },
+      "replay_retention_accuracy": 1,
+      "retention_scope": "training replay only; no separate old task yet",
+      "test": {
+        "loss": 0.000942292565,
+        "exact_accuracy": 1
+      },
+      "gguf_test_accuracy": 1,
+      "peak_rss_mib": 211.320312,
+      "exports": [
+        {
+          "name": "fixed-control",
+          "f32_max_logit_error": 2.86102e-06,
+          "f16_max_logit_error": 0.00121653,
+          "f16_bytes": 1592576
+        },
+        {
+          "name": "growth-candidate",
+          "f32_max_logit_error": 3.8147e-06,
+          "f16_max_logit_error": 0.000795364,
+          "f16_bytes": 1921824
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "x=1,y=0,a=L,b=1>",
+          "expected": "1,0;",
+          "predicted": "1,0;"
+        },
+        {
+          "prompt": "x=3,y=2,a=U,b=1>",
+          "expected": "3,2;",
+          "predicted": "3,2;"
+        },
+        {
+          "prompt": "x=2,y=3,a=R,b=1>",
+          "expected": "2,3;",
+          "predicted": "2,3;"
+        },
+        {
+          "prompt": "x=0,y=1,a=D,b=1>",
+          "expected": "0,1;",
+          "predicted": "0,1;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=1>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=1,y=2,a=R,b=1>",
+          "expected": "1,2;",
+          "predicted": "1,2;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=0>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=2,y=0,a=U,b=0>",
+          "expected": "2,1;",
+          "predicted": "2,1;"
+        }
+      ]
+    },
+    {
+      "schema": 1,
+      "seed": 44,
+      "threads": 2,
+      "batch_size": 16,
+      "baseline_steps": 600,
+      "extra_steps_per_branch": 200,
+      "control_train_seconds": 3.39636597,
+      "growth_train_seconds": 4.18263204,
+      "proposal": "forced diagnostic; selection is rule-based",
+      "comparison": "equal update steps and examples, not equal CPU time",
+      "growth_accepted": false,
+      "selected_layers": 4,
+      "selected_parameters": 787584,
+      "initial_validation": {
+        "loss": 6.26502466,
+        "exact_accuracy": 0
+      },
+      "baseline_validation": {
+        "loss": 0.169321075,
+        "exact_accuracy": 0.916666667
+      },
+      "control_validation": {
+        "loss": 0.17940557,
+        "exact_accuracy": 0.916666667
+      },
+      "growth_validation": {
+        "loss": 0.180903211,
+        "exact_accuracy": 0.916666667
+      },
+      "replay_retention_accuracy": 1,
+      "retention_scope": "training replay only; no separate old task yet",
+      "test": {
+        "loss": 0.182470322,
+        "exact_accuracy": 0.916666667
+      },
+      "gguf_test_accuracy": 0.916666667,
+      "peak_rss_mib": 211.117188,
+      "exports": [
+        {
+          "name": "fixed-control",
+          "f32_max_logit_error": 3.8147e-06,
+          "f16_max_logit_error": 0.00196099,
+          "f16_bytes": 1592576
+        },
+        {
+          "name": "growth-candidate",
+          "f32_max_logit_error": 4.76837e-06,
+          "f16_max_logit_error": 0.000802875,
+          "f16_bytes": 1921824
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "x=1,y=0,a=L,b=1>",
+          "expected": "1,0;",
+          "predicted": "1,0;"
+        },
+        {
+          "prompt": "x=3,y=2,a=U,b=1>",
+          "expected": "3,2;",
+          "predicted": "3,2;"
+        },
+        {
+          "prompt": "x=2,y=3,a=R,b=1>",
+          "expected": "2,3;",
+          "predicted": "2,3;"
+        },
+        {
+          "prompt": "x=0,y=1,a=D,b=1>",
+          "expected": "0,1;",
+          "predicted": "0,1;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=1>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=1,y=2,a=R,b=1>",
+          "expected": "1,2;",
+          "predicted": "1,2;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=0>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=2,y=0,a=U,b=0>",
+          "expected": "2,1;",
+          "predicted": "2,1;"
+        }
+      ]
+    }
+  ],
+  "run_artifact_sha256": {
+    "artifacts/adaptive-llama/pilot-42/episodes.jsonl": "2424a4d4586c02c5274099cfb703dca91a68a0a31fd5a0f381bfa3fc030efdde",
+    "artifacts/adaptive-llama/pilot-42/baseline.pt": "a14e99dc47df60de1bfadadc07281bb13ca589fc8fd8ae80901d5fda8c02e10f",
+    "artifacts/adaptive-llama/pilot-42/fixed-control.pt": "5f3d49f30733bd1172c0da421a7ffb841ea0db45055a2e68de48a4d60e5410de",
+    "artifacts/adaptive-llama/pilot-42/growth-candidate.pt": "677e85a1cb4ae56c5fc6230be7c1abec1dd35874001a537b4268705739b18270",
+    "artifacts/adaptive-llama/pilot-42/selected.pt": "8b091b8673d842daca3913720a58a505bfbb3789efba0bb28f2f9b9915f91cec",
+    "artifacts/adaptive-llama/pilot-42/selected-f16.gguf": "92522b132cfe014308f53adea9105e9f6f9f60118363126a46f51bd19ca7584d",
+    "artifacts/adaptive-llama/pilot-43/episodes.jsonl": "2424a4d4586c02c5274099cfb703dca91a68a0a31fd5a0f381bfa3fc030efdde",
+    "artifacts/adaptive-llama/pilot-43/baseline.pt": "4555d337af6584d415f6368ace1071a459aff4ca5f2ce7c613c317c47c223c70",
+    "artifacts/adaptive-llama/pilot-43/fixed-control.pt": "6b21ac4b19c9214c6893af9bc59badc20d5a6ab0291fadcf8c7a24022e6f24d7",
+    "artifacts/adaptive-llama/pilot-43/growth-candidate.pt": "3e402be2b11cef92f20081a17bd7417e324b4aca82a5b1c5ec98f7d639a486ce",
+    "artifacts/adaptive-llama/pilot-43/selected.pt": "fd0b238d93099b26440a475fd810e02b94417f703a543d312c742497698cea56",
+    "artifacts/adaptive-llama/pilot-43/selected-f16.gguf": "2965c7923238c04e5364c2ab1c8da12a56446c5059a9e6368201ee8883b38a60",
+    "artifacts/adaptive-llama/pilot-44/episodes.jsonl": "2424a4d4586c02c5274099cfb703dca91a68a0a31fd5a0f381bfa3fc030efdde",
+    "artifacts/adaptive-llama/pilot-44/baseline.pt": "f47d258139e14e596ed7770d7fb602ba1d50718612e07c2aca30a4b404e4303b",
+    "artifacts/adaptive-llama/pilot-44/fixed-control.pt": "0a71b025f7e35b60b905af9ad9cad1c863927d0426c5db2ccb47d165c9d775b6",
+    "artifacts/adaptive-llama/pilot-44/growth-candidate.pt": "0750fcfd00a89efd721cb82a1e91b071a0d7f604c281bb57008f6d930b9d8c29",
+    "artifacts/adaptive-llama/pilot-44/selected.pt": "92719d4451a3ce8ab63c0ed0f27a63faa6b61f397ae8b094da29788bb5e444a2",
+    "artifacts/adaptive-llama/pilot-44/selected-f16.gguf": "45f5e286393ec267eb55cdb918906b69d939ab08f01cf1c0d694a138f6c29d70"
+  },
+  "additional_checks": [
+    "causal mask prefix invariance",
+    "fresh-process selected.pt prediction: x=1,y=2,a=R,b=0> -> 2,2;",
+    "offline browser checks for accepted and rejected growth reports",
+    "Qwen compatibility import without model load",
+    "Qwen notebook and visual assets preserved byte-for-byte"
+  ],
+  "verification_source_sha256": {
+    "experiments/adaptive-llama/README.md": "6de18493e33c285f8dccb0387ac02143859631ab4aeffa04dc5f4b30afe1a747",
+    "experiments/adaptive-llama/headers.sha256": "847632d5e885f4006918a8848a46387bf0950a47d5347ef5ce6ce7cd0b780f36",
+    "experiments/adaptive-llama/src/main.cpp": "62e317c8805eb4f2daf08b1acb37b48f838d4fec42b5721b30bac11518b3b480",
+    "experiments/adaptive-llama/tests/check-report.cjs": "9951ed2f7669885032f2d9a9e41443ac56d2c1ea1820f0678e9622ca328aab22",
+    "experiments/adaptive-llama/tools/build.sh": "f89c0b5eee26cb939b0b90d06e74e53fe361cd6cd77eefd958bb7eec922cb795",
+    "experiments/adaptive-llama/tools/run.sh": "97d3b37ca00f78f6f3245884b8cb8b59d14cdd3432915a8ddaaa3f3a9c64f8eb",
+    "experiments/adaptive-llama/tools/setup-headers.sh": "d1510fdd5f7b661b3667cc82930a8713f211db18041c0d86c8f098c88967a7c5",
+    "experiments/adaptive-llama/ui/report.html": "e649c3ae560a9cf113ed40e4bb7892ef96c1c09e03f56737a2e76e3d012d687e"
+  },
+  "binary_sha256": "9a35f1052eb0630c27af7de1a91f0d2dcaa2413cf7d2b3c442fb32a67c833f7a"
+}

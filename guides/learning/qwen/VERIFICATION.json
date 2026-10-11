@@ -1,0 +1,63 @@
+{
+  "checked_on": "2026-10-11",
+  "model": "Qwen3.5-0.8B",
+  "analysis": {
+    "model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "input_tokens": 5,
+    "attention_layers": [
+      3,
+      7,
+      11,
+      15,
+      19,
+      23
+    ],
+    "decoder_layers": 24,
+    "threads": 2,
+    "dtype": "torch.bfloat16",
+    "analysis_seconds": 0.5797937159995854,
+    "ablation_total_variation": 0.09507450461387634,
+    "generation": {
+      "text": "Budapest.\n",
+      "tokens": 6,
+      "seconds": 3.158402420999664
+    },
+    "peak_process_rss_mib": 2034.7421875,
+    "checks": [
+      "input limit before model load",
+      "24 decoder outputs",
+      "six attention layers / eight heads",
+      "finite activations/logits",
+      "attention normalization",
+      "causal mask",
+      "top-token probabilities",
+      "MLP ablation / hook cleanup",
+      "chat generation",
+      "BertViz HTML export"
+    ]
+  },
+  "llama_cpp_build": "b11429 / d81235049",
+  "chat_health": "ok",
+  "browser_checks": [
+    "llama.cpp Web UI correct model",
+    "Jupyter notebook opens",
+    "Run All Cells creates controls",
+    "Analyze prompt captures real model outputs",
+    "Activation tab renders",
+    "BertViz iframe renders SVG",
+    "Unload model completes"
+  ],
+  "lifecycle": [
+    "project stop command closes ports 8088 and 8890",
+    "both servers manually restarted",
+    "zero analysis kernels at handoff",
+    "no boot/login configuration created"
+  ],
+  "pdf_pages": 5,
+  "limitations": [
+    "CPU text path only",
+    "not a matched runtime performance benchmark",
+    "six full attention matrices; DeltaNet represented by decoder-output RMS, not recurrent-state interpretation"
+  ]
+}

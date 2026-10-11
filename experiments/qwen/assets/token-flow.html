@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qwen3.5-0.8B · A token útja</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#172b3b;background:#f3f6fa;font-size:15px}*{box-sizing:border-box}body{margin:0;padding:24px}main{max-width:1150px;margin:auto}h1{font-size:30px;letter-spacing:-1px;margin:8px 0}h2{font-size:18px;margin:0 0 12px}p{line-height:1.5;margin:8px 0}.muted{color:#526679}.eyebrow{font-size:12px;letter-spacing:2px;font-weight:700;color:#087b80}.panel{background:white;border:1px solid #d9e3ed;border-radius:14px;padding:20px;margin:16px 0}.top{display:flex;justify-content:space-between;gap:20px;align-items:center}.badge{background:#e3f5ef;color:#126342;padding:6px 10px;border-radius:20px;font-size:12px;white-space:nowrap}button{font:inherit;cursor:pointer;border:1px solid #c5d5e4;border-radius:8px;background:#fff;padding:9px 14px;color:#172b3b}button:hover{background:#eef5fc}button:focus-visible,input:focus-visible{outline:3px solid #0a7ac2;outline-offset:3px}button:disabled{opacity:.45;cursor:default}.primary{background:#086d85;color:white;border-color:#086d85}.primary:hover{background:#06566a}.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}#seek{flex:1;min-width:130px;accent-color:#086d85}#stepNumber{min-width:65px;font-variant-numeric:tabular-nums}#flow{width:100%;height:auto;margin:15px 0}.flowbox{fill:#f6f8fb;stroke:#cfdae5;stroke-width:1.5}.flowbox.active{fill:#dbf2f3;stroke:#087b80;stroke-width:3}.flowtext{font-family:system-ui;fill:#233b50;font-size:15px;font-weight:600}.subtext{font-family:system-ui;fill:#5d7182;font-size:12px}.arrow{stroke:#98abba;stroke-width:2;fill:none}#explanation{background:#edf7fa;border-left:4px solid #087b80;padding:14px;border-radius:4px;min-height:94px}.tokens{display:flex;gap:8px;overflow-x:auto;padding:5px 2px 12px}.token{min-width:95px;flex-shrink:0;text-align:left}.token b{display:block}.token small{display:block;color:#64758a;margin-top:4px}.selected{border:2px solid #086d85;background:#e9f6f8}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.vector{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px;margin:12px 0}.coord{border-radius:5px;min-height:40px;text-align:center;padding:6px 1px;font-size:11px;font-variant-numeric:tabular-nums;color:#172b3b;border:1px solid #d4dfe5}.coord span{display:block;font-size:9px;opacity:.65}.legend{height:9px;width:170px;background:linear-gradient(90deg,#709dea,#fff,#e69779);border:1px solid #cbd5df;border-radius:4px;margin:5px 0}.layers{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;margin:12px 0}.layer{padding:7px 2px;font-size:11px;border-top:4px solid #b4b5e4}.layer.full{border-top-color:#20a78c}.layer.active{background:#dff3f5;border-color:#087b80;font-weight:700}table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:7px;border-bottom:1px solid #edf1f5}td:last-child{text-align:right;font-variant-numeric:tabular-nums}.bar{height:6px;background:#087b80;border-radius:2px;margin-top:4px}.fine{font-size:12px;color:#526679}details{margin-top:14px}summary{cursor:pointer;font-weight:600}code{font-family:ui-monospace,monospace;overflow-wrap:anywhere}#stageTitle{margin-bottom:3px}#predictionNote{background:#fff5e5;padding:10px;border-radius:6px;font-size:13px}@media(max-width:700px){body{padding:12px}.grid{grid-template-columns:1fr}.layers{grid-template-columns:repeat(6,1fr)}.top{display:block}.badge{display:inline-block;margin-top:8px}h1{font-size:25px}.panel{padding:14px}}@media print{body{background:white;padding:0}.controls{display:none}.panel{break-inside:avoid}details{display:block}}
+</style>
+</head>
+<body><main>
+<div class="top"><div><div class="eyebrow">QWEN3.5-0.8B · EGY KONKRÉT BEMENET ÚTJA</div><h1>Hogyan lesz a szövegből belső reprezentáció?</h1></div><span class="badge">Valódi, helyben mért értékek</span></div>
+<p class="muted">Válassz egy szót, majd lépkedj a rétegeken. A lejátszás a rögzített számítás oktatási visszajátszása; nem indít új modellt.</p>
+<section class="panel">
+<h2>1. A bemenet és a tokenek</h2><p><strong>Beírt szöveg:</strong> <span id="prompt"></span></p><p class="fine" id="mode"></p>
+<div class="tokens" id="tokens" aria-label="Válassz egy tokent"></div>
+<p class="fine">A token egy szövegdarab. Az ID egy sorszám a szótárban, nem a szó jelentése. A ␠ jel szóközt jelöl.</p>
+<svg id="flow" viewBox="0 0 1060 105" role="img" aria-label="Szövegből tokenazonosító, abból vektor, majd rétegek, normalizálás és következő token eloszlása">
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#98abba"/></marker></defs>
+<g id="node0"><rect class="flowbox" x="2" y="15" width="178" height="75" rx="10"/><text class="flowtext" x="15" y="44">Tokenazonosító</text><text class="subtext" id="idLabel" x="15" y="69"></text></g>
+<path class="arrow" d="M183 52H214" marker-end="url(#arrow)"/>
+<g id="node1"><rect class="flowbox" x="218" y="15" width="178" height="75" rx="10"/><text class="flowtext" x="231" y="44">Embedding</text><text class="subtext" x="231" y="69">1024 tanult szám</text></g>
+<path class="arrow" d="M399 52H430" marker-end="url(#arrow)"/>
+<g id="node2"><rect class="flowbox" x="434" y="15" width="178" height="75" rx="10"/><text class="flowtext" x="447" y="44">24 réteg</text><text class="subtext" x="447" y="69">A környezet beépítése</text></g>
+<path class="arrow" d="M615 52H646" marker-end="url(#arrow)"/>
+<g id="node3"><rect class="flowbox" x="650" y="15" width="178" height="75" rx="10"/><text class="flowtext" x="663" y="44">Normalizálás</text><text class="subtext" x="663" y="69">Végső belső állapot</text></g>
+<path class="arrow" d="M831 52H862" marker-end="url(#arrow)"/>
+<g id="node4"><rect class="flowbox" x="866" y="15" width="192" height="75" rx="10"/><text class="flowtext" x="879" y="44">Következő token</text><text class="subtext" x="879" y="69">Softmax → eloszlás</text></g>
+</svg>
+<div class="controls"><button id="reset" title="Vissza az embeddinghez">Elejére</button><button id="previous">← Előző</button><button id="play" class="primary">▶ Lejátszás</button><button id="next">Következő →</button><input id="seek" type="range" min="0" max="26" value="0" aria-label="A számítás lépése"><span id="stepNumber"></span></div>
+<div class="layers" id="layers" aria-label="A 24 réteg"></div>
+<p class="fine">D = Gated DeltaNet · A = teljes attention. Minden blokk feed-forward (MLP) és maradékkapcsolatokat is tartalmaz. A rétegszámok 0-tól indulnak.</p>
+<div id="explanation" aria-live="polite"><h2 id="stageTitle"></h2><p id="stageText"></p></div>
+</section>
+<section class="panel"><h2>Mi az adatstruktúra, és mi az algoritmus?</h2>
+<p><strong>Tanult paraméterek:</strong> az embeddingtábla és a rétegek súlymátrixai. Ezek most állandók. <strong>Aktivációk:</strong> a bemenetből számított, rétegenként változó számtömbök. A tensor többdimenziós számtömböt jelent.</p>
+<table><thead><tr><th>Adat</th><th>Méret ebben a példában</th></tr></thead><tbody id="structures"></tbody></table>
+<p class="fine">A méretekből az egyetlen példát jelölő batch dimenziót elhagytuk. Az attention-tensor csak a hat teljes attention-rétegre vonatkozik.</p>
+<details><summary>A műveletek: embedding, attention, DeltaNet, MLP és kimenet</summary>
+<p><strong>Embedding:</strong> indexelés egy táblában. <code>X = E[tokenazonosítók]</code>. Nem a token ID számértékéből számoljuk ki a jelentést.</p>
+<p><strong>Teljes attention:</strong> tanult lineáris leképezésekből Q (lekérdezés), K (kulcs), V (átadandó információ) és egy kapu készül. Q és K normalizálást, illetve pozíciófüggő forgatást (RoPE) is kap. A súlyozott keverés magja: <code>A = softmax(Q × Kᵀ / √256 + oksági maszk)</code>, majd <code>A × V</code>. A kapu és a kimeneti leképezés után ismét 1024 szám jut egy tokenpozícióra.</p>
+<p><strong>Nyolc fej:</strong> 8 Q fej, de csak 2 K/V fej van; a Q fejek csoportjai megosztják a K/V fejeket (GQA). Egy fej Q/K/V vektora 256 koordinátás. A BertViz az A tensor elemeit rajzolja vonalakként.</p>
+<p><strong>Gated DeltaNet:</strong> rövid oksági konvolúció és kapuzott delta-szabály keveri a tokenek információit. Ez állapotfrissítéssel is leírható; többtokenes feldolgozáskor a megvalósítás blokkokban számolhat. Nincs ugyanez a teljes softmax attention-mátrix.</p>
+<p><strong>MLP:</strong> két lineáris leképezés 1024-ről 3584 koordinátára; az egyik SiLU aktiválást kap, majd elemenként összeszorozzuk őket. Egy további leképezés visszavisz 1024 koordinátára. A blokkban normalizálás és maradékkapcsolatok is vannak: a kiszámított változást hozzáadjuk a korábbi állapothoz.</p>
+<p><strong>Kimenet:</strong> az utolsó pozíció normalizált állapota × kimeneti súlymátrix → szótárméretű pontszámvektor (logits). A softmax ebből számít valószínűségeket. A kiválasztás/generálás ezt követő külön lépés lenne.</p>
+<p class="fine">Ez a rész a telepített modell konfigurációját és algoritmusát írja le; nem külön rögzített Q/K/V vagy DeltaNet-állapotok megjelenítése.</p>
+</details></section>
+<section class="grid">
+<div class="panel"><h2>2. A kiválasztott token számai</h2><p id="selectedText"></p><p class="fine">A teljes vektor 1024 koordináta. Itt az első 16 valódi koordinátát látod, nem kétdimenziós vetületet és nem 16 „jelentést”.</p>
+<strong>Kiinduló embedding</strong><div class="vector" id="embedding"></div><strong id="vectorTitle">Aktuális reprezentáció</strong><div class="vector" id="current"></div><div class="legend"></div><p class="fine" id="scale"></p><p id="rms"></p><p class="fine">Az RMS mind az 1024 szám nagyságát összegzi. Nagyobb érték nem jelent nagyobb fontosságot vagy biztosabb választ.</p></div>
+<div class="panel"><h2>3. Mi következhet a mondat után?</h2><p id="predictionNote"></p><table><thead><tr><th>Lehetséges következő token</th><th>Valószínűség</th></tr></thead><tbody id="predictions"></tbody></table><p class="fine">A végső réteg UTÁNI teljes szótáreloszlás tíz legnagyobb értéke. Nem rétegenkénti jóslat és nem a válasz igazságának valószínűsége. Ez a felvétel nem választott ki és nem generált új tokent.</p></div>
+</section>
+<details class="panel"><summary>Mit mutat ez a gráf, és mit nem?</summary><p>A kártyák és a nyilak a számítás sorrendjét magyarázzák. Nem egyedi neuronok vezetékezését mutatják. A modellek súlyai a futás során nem változnak; a bemenetből számított aktivációk változnak rétegről rétegre.</p><p>A kiválasztott pozíció csak a saját és korábbi pozíciók információit kaphatja meg. A pozíciókezelés is része a modellnek; az embedding és az attention súlyok önmagukban nem írják le a teljes számítást.</p><p>Az embedding a modell tanult szótártáblájából származik. A rétegképek a teljes decoder blokk kimenetei. A végső normalizálás után az utolsó pozíció állapotát a kimeneti súlymátrix alakítja tokenpontszámokká; a softmax alakítja ezeket valószínűségekké.</p><p>A DeltaNet belső memóriáját és az attention Q/K/V vektorait itt nem bontjuk ki. A kapcsolatokhoz a meglévő BertViz nézet használható. A BF16 elemzés számai eltérhetnek a C++ chat Q4_K_M eredményeitől.</p><p class="fine">Modellrevízió: <code id="revision"></code>. A lejátszás sebessége szemléltető, nem a futási idő.</p></details>
+</main>
+<script id="data" type="application/json">__TOKEN_FLOW_DATA__</script>
+<script>
+'use strict';
+const data=JSON.parse(document.getElementById('data').textContent), $=id=>document.getElementById(id);
+let stage=0, selected=data.tokens.length-1, timer=null;
+const last=data.tokens.length-1;
+$('prompt').textContent=data.prompt;
+$('mode').textContent=data.chat?'Chat-sablonnal: a szerepjelölők is a tényleges bemenet tokenjei.':'Nyers szöveg: nincs hozzáadott chat-sablon.';
+$('revision').textContent=data.revision;
+const n=data.tokens.length,g=data.geometry;
+[['Tokenazonosítók – egész számok listája',`${n}`],['Embeddingtábla – tanult paraméterek',`${g.vocab_size} × ${g.hidden_size}`],['Reprezentáció – tokenenként egy számsor',`${n} × ${g.hidden_size}`],['Attention-súlyok – 8 fej kapcsolatai',`${g.num_attention_heads} × ${n} × ${n}`],['MLP köztes szélessége',`${n} × ${g.intermediate_size}`],['Következőtoken-eloszlás',`${g.vocab_size} valószínűség`]].forEach(row=>{const tr=document.createElement('tr');row.forEach(text=>{const td=document.createElement('td');td.textContent=text;tr.append(td)});$('structures').append(tr)});
+const maxCoordinate=Math.max(1e-9,...data.stages.flatMap(s=>s.first16.flat().map(Math.abs)));
+$('scale').textContent=`Kék: negatív · fehér: 0 · narancs: pozitív. Azonos skála minden tokennél és rétegnél: ±${maxCoordinate.toFixed(3)}.`;
+function label(t){return t.token.replaceAll('Ġ','␠').replaceAll('Ċ','↵');}
+data.tokens.forEach((t,i)=>{const b=document.createElement('button');b.className='token';b.innerHTML='<b></b><small></small>';b.firstChild.textContent=label(t);b.lastChild.textContent=`ID ${t.token_id} · pozíció ${i}`;b.onclick=()=>{selected=i;render()};$('tokens').append(b)});
+data.stages.slice(1,25).forEach((s,i)=>{const b=document.createElement('button');b.className='layer'+(s.kind==='full_attention'?' full':'');b.textContent=`${i} · ${s.kind==='full_attention'?'A':'D'}`;b.title=`${i}. réteg: ${s.kind==='full_attention'?'teljes attention':'Gated DeltaNet'}`;b.onclick=()=>{pause();stage=i+1;render()};$('layers').append(b)});
+function vector(node,values){node.replaceChildren();values.forEach((v,i)=>{const cell=document.createElement('div');cell.className='coord';const amount=Math.min(1,Math.abs(v)/maxCoordinate);cell.style.background=`color-mix(in srgb, ${v<0?'#709dea':'#e69779'} ${amount*100}%, white)`;cell.textContent=v.toFixed(4);const index=document.createElement('span');index.textContent=`[${i}]`;cell.append(index);cell.title=`${i}. koordináta, mért érték: ${v}`;node.append(cell)})}
+function pause(){clearInterval(timer);timer=null;$('play').textContent='▶ Lejátszás'}
+function render(){
+ const s=data.stages[Math.min(stage,25)], token=data.tokens[selected];
+ [...$('tokens').children].forEach((b,i)=>{b.classList.toggle('selected',i===selected);b.setAttribute('aria-pressed',String(i===selected))});
+ [...$('layers').children].forEach((b,i)=>{b.classList.toggle('active',stage===i+1);b.setAttribute('aria-pressed',String(stage===i+1))});
+ document.querySelectorAll('.flowbox').forEach((n,i)=>n.classList.toggle('active',i===(stage===0?1:stage<=24?2:stage===25?3:4)));
+ $('idLabel').textContent=`${label(token)} → ${token.token_id}`;
+ $('selectedText').textContent=`Kiválasztva: ${label(token)} · ${selected}. pozíció`;
+ $('seek').value=stage;$('stepNumber').textContent=`${stage} / 26`;$('previous').disabled=stage===0;$('next').disabled=stage===26;
+ let title,explain;
+ if(stage===0){title='Embedding: a tokenazonosítóból számsor';explain=`A(z) ${token.token_id} azonosító kiválaszt egy sort a tanult embeddingtáblából. Ez 1024 szám. Ennél a lépésnél még nincs belekeverve a mondat többi tokenjének információja.`}
+ else if(stage<=24){const isFull=s.kind==='full_attention';title=`${s.layer}. réteg: ${isFull?'teljes attention':'Gated DeltaNet'} + MLP`;explain=(isFull?'Az attention a korábbi és az aktuális pozíció információit súlyozza. Ezt a tokenek közötti súlyozást láttad a BertViz vonalain.':'A Gated DeltaNet egy állapotalapú mechanizmussal dolgozza fel a korábbi és az aktuális pozíció információit. Itt nincs a BertVizhez hasonló teljes attention-mátrix.')+' A megjelenített vektor a teljes blokk kimenete, az MLP és a maradékkapcsolatok után.'}
+ else if(stage===25){title='Végső normalizálás';explain='A modell normalizálja a 24. blokk után kapott vektorokat. Ez külön lépés: az itt megváltozó számskála nem újabb attention vagy újabb szövegértési művelet.'}
+ else{title='Az utolsó pozícióból következőtoken-eloszlás';explain=`A folytatás számításához a(z) ${label(data.tokens[last])} token végső állapotát használjuk. A kimeneti súlymátrix minden lehetséges tokenhez pontszámot rendel, a softmax pedig valószínűséget számít. Más token kiválasztása a bal oldalon nem változtatja meg ezt az eloszlást.`}
+ $('stageTitle').textContent=title;$('stageText').textContent=explain;
+ vector($('embedding'),data.stages[0].first16[selected]);vector($('current'),s.first16[selected]);
+ $('vectorTitle').textContent=stage===0?'Ugyanaz a kiinduló vektor':stage<=24?`${s.layer}. réteg kimenete`:'Végső, normalizált vektor';
+ $('rms').textContent=`Teljes vektor RMS: ${s.rms[selected].toFixed(5)} · 1024 koordináta`;
+ $('predictionNote').textContent=stage===26?`Most értünk a jóslatig. A jobb oldali lista a teljes bemenet utáni folytatásra vonatkozik (${label(data.tokens[last])} utolsó pozíció).`:'Az eloszlás a folyamat végén jelenik meg. Lépj a 26. állomásra, vagy indítsd el a lejátszást.';
+ $('predictions').replaceChildren();
+ if(stage===26)data.next_tokens.forEach(t=>{const tr=document.createElement('tr'),name=document.createElement('td'),value=document.createElement('td'),bar=document.createElement('div');name.textContent=t.token;value.textContent=(100*t.probability).toFixed(3)+'%';bar.className='bar';bar.style.width=(100*t.probability)+'%';name.append(bar);tr.append(name,value);$('predictions').append(tr)});
+}
+$('reset').onclick=()=>{pause();stage=0;render()};$('previous').onclick=()=>{pause();stage=Math.max(0,stage-1);render()};$('next').onclick=()=>{pause();stage=Math.min(26,stage+1);render()};$('seek').oninput=e=>{pause();stage=Number(e.target.value);render()};
+$('play').onclick=()=>{if(timer){pause();return}if(stage===26)stage=0;$('play').textContent='Ⅱ Szünet';render();timer=setInterval(()=>{stage++;render();if(stage===26)pause()},1100)};
+document.addEventListener('visibilitychange',()=>{if(document.hidden)pause()});
+render();
+</script></body></html>

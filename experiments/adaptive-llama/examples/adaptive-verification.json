@@ -1,0 +1,878 @@
+{
+  "measured_date": "2026-10-11",
+  "source_base_revision": "23aba455dafa1e396987bcc2c65497dc975c8de2",
+  "provenance": "Uncommitted working tree. Final build adds all-branch resume comparison and completed-resume no-op; training algorithm unchanged from recorded runs.",
+  "previous_version_evidence": "verification.json",
+  "compiler": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+  "libtorch": "2.8.0+cpu C++11 ABI, reused from existing wheel",
+  "llama_cpp": "b11429 / d81235049",
+  "native_self_test": {
+    "passed": true,
+    "exports": [
+      {
+        "name": "check-4",
+        "f32_max_logit_error": 5.36442e-07,
+        "f16_max_logit_error": 0.000259787,
+        "f16_bytes": 1592576
+      },
+      {
+        "name": "check-5",
+        "f32_max_logit_error": 9.53674e-07,
+        "f16_max_logit_error": 0.000313044,
+        "f16_bytes": 1921824
+      }
+    ]
+  },
+  "proposal_rule_self_test": true,
+  "resume_tests": {
+    "seed_44_pause_points": [
+      {
+        "phase": "baseline",
+        "step": 250
+      },
+      {
+        "phase": "control",
+        "step": 650
+      },
+      {
+        "phase": "candidate",
+        "step": 650
+      }
+    ],
+    "seed_42_sigterm": {
+      "phase": "baseline",
+      "saved_step": 52,
+      "paused_without_complete": true
+    },
+    "comparison": "Exact decisions, validation history, weights, batch RNG and next optimizer update for every saved branch, including rejected candidate",
+    "compare_44_stdout": " step=801 loss=0.00107677\n step=801 loss=0.00107677\n step=601 loss=0.00183965\n step=601 loss=0.00183965\n step=801 loss=0.00107677\n step=801 loss=0.00107677\n step=801 loss=0.00104836\n step=801 loss=0.00104836\nPASS: fresh-process experiment resume preserved decisions, validation history, every branch's weights, RNG and next optimizer update.\n",
+    "compare_42_stdout": " step=801 loss=0.00101311\n step=801 loss=0.00101311\n step=601 loss=0.00168977\n step=601 loss=0.00168977\n step=801 loss=0.00101311\n step=801 loss=0.00101311\nPASS: fresh-process experiment resume preserved decisions, validation history, every branch's weights, RNG and next optimizer update.\n",
+    "completed_resume_all_artifact_bytes_unchanged": true,
+    "forced_kill_or_power_loss_tested": false
+  },
+  "browser_checks": {
+    "reports": [
+      "adaptive-seed-42.html",
+      "adaptive-seed-44.html"
+    ],
+    "passed": [
+      "skipped/rejected phase graphs",
+      "recorded validation slider",
+      "measured metrics",
+      "narrow layout",
+      "no JavaScript errors",
+      "no HTTP requests"
+    ]
+  },
+  "runs": {
+    "v2-42": {
+      "schema": 2,
+      "seed": 42,
+      "threads": 2,
+      "batch_size": 16,
+      "baseline_steps": 600,
+      "extra_steps_per_branch": 200,
+      "control_train_seconds": 3.37994161,
+      "growth_train_seconds": 0,
+      "proposal": "validation-driven rule, not a learned policy",
+      "growth_proposed": false,
+      "proposal_reason": "target_reached",
+      "comparison": "equal updates/examples when proposed; not equal CPU time",
+      "growth_accepted": false,
+      "selected_layers": 4,
+      "selected_parameters": 787584,
+      "initial_validation": {
+        "loss": 6.30991936,
+        "exact_accuracy": 0
+      },
+      "baseline_validation": {
+        "loss": 0.00191077951,
+        "exact_accuracy": 1
+      },
+      "control_validation": {
+        "loss": 0.00111210789,
+        "exact_accuracy": 1
+      },
+      "growth_validation": null,
+      "replay_retention_accuracy": 1,
+      "retention_scope": "training replay only; no separate old task yet",
+      "test": {
+        "loss": 0.00110294053,
+        "exact_accuracy": 1
+      },
+      "gguf_test_accuracy": 1,
+      "peak_rss_mib": 171.472656,
+      "resumes": 0,
+      "exports": [
+        {
+          "name": "fixed-control",
+          "f32_max_logit_error": 2.86102e-06,
+          "f16_max_logit_error": 0.000677466,
+          "f16_bytes": 1592576
+        }
+      ],
+      "validation_history": [
+        {
+          "step": 0,
+          "metrics": {
+            "loss": 6.30991936,
+            "exact_accuracy": 0
+          }
+        },
+        {
+          "step": 50,
+          "metrics": {
+            "loss": 0.459445506,
+            "exact_accuracy": 0.708333333
+          }
+        },
+        {
+          "step": 100,
+          "metrics": {
+            "loss": 0.269093692,
+            "exact_accuracy": 0.666666667
+          }
+        },
+        {
+          "step": 150,
+          "metrics": {
+            "loss": 0.217045128,
+            "exact_accuracy": 0.75
+          }
+        },
+        {
+          "step": 200,
+          "metrics": {
+            "loss": 0.076881133,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 250,
+          "metrics": {
+            "loss": 0.0146872625,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 300,
+          "metrics": {
+            "loss": 0.00888433401,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 350,
+          "metrics": {
+            "loss": 0.00551107386,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 400,
+          "metrics": {
+            "loss": 0.00421005907,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 450,
+          "metrics": {
+            "loss": 0.00330491108,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 500,
+          "metrics": {
+            "loss": 0.00272605568,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 550,
+          "metrics": {
+            "loss": 0.00228954921,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 600,
+          "metrics": {
+            "loss": 0.00191077951,
+            "exact_accuracy": 1
+          }
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "x=1,y=0,a=L,b=1>",
+          "expected": "1,0;",
+          "predicted": "1,0;"
+        },
+        {
+          "prompt": "x=3,y=2,a=U,b=1>",
+          "expected": "3,2;",
+          "predicted": "3,2;"
+        },
+        {
+          "prompt": "x=2,y=3,a=R,b=1>",
+          "expected": "2,3;",
+          "predicted": "2,3;"
+        },
+        {
+          "prompt": "x=0,y=1,a=D,b=1>",
+          "expected": "0,1;",
+          "predicted": "0,1;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=1>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=1,y=2,a=R,b=1>",
+          "expected": "1,2;",
+          "predicted": "1,2;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=0>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=2,y=0,a=U,b=0>",
+          "expected": "2,1;",
+          "predicted": "2,1;"
+        }
+      ]
+    },
+    "v2-44": {
+      "schema": 2,
+      "seed": 44,
+      "threads": 2,
+      "batch_size": 16,
+      "baseline_steps": 600,
+      "extra_steps_per_branch": 200,
+      "control_train_seconds": 3.75015517,
+      "growth_train_seconds": 9.04631954,
+      "proposal": "validation-driven rule, not a learned policy",
+      "growth_proposed": true,
+      "proposal_reason": "validation_plateau",
+      "comparison": "equal updates/examples when proposed; not equal CPU time",
+      "growth_accepted": false,
+      "selected_layers": 4,
+      "selected_parameters": 787584,
+      "initial_validation": {
+        "loss": 6.26502466,
+        "exact_accuracy": 0
+      },
+      "baseline_validation": {
+        "loss": 0.169321075,
+        "exact_accuracy": 0.916666667
+      },
+      "control_validation": {
+        "loss": 0.17940557,
+        "exact_accuracy": 0.916666667
+      },
+      "growth_validation": {
+        "loss": 0.180903211,
+        "exact_accuracy": 0.916666667
+      },
+      "replay_retention_accuracy": 1,
+      "retention_scope": "training replay only; no separate old task yet",
+      "test": {
+        "loss": 0.182470322,
+        "exact_accuracy": 0.916666667
+      },
+      "gguf_test_accuracy": 0.916666667,
+      "peak_rss_mib": 185.742188,
+      "resumes": 0,
+      "exports": [
+        {
+          "name": "fixed-control",
+          "f32_max_logit_error": 3.8147e-06,
+          "f16_max_logit_error": 0.00196099,
+          "f16_bytes": 1592576
+        },
+        {
+          "name": "growth-candidate",
+          "f32_max_logit_error": 4.76837e-06,
+          "f16_max_logit_error": 0.000802875,
+          "f16_bytes": 1921824
+        }
+      ],
+      "validation_history": [
+        {
+          "step": 0,
+          "metrics": {
+            "loss": 6.26502466,
+            "exact_accuracy": 0
+          }
+        },
+        {
+          "step": 50,
+          "metrics": {
+            "loss": 0.485726029,
+            "exact_accuracy": 0.708333333
+          }
+        },
+        {
+          "step": 100,
+          "metrics": {
+            "loss": 0.261307478,
+            "exact_accuracy": 0.625
+          }
+        },
+        {
+          "step": 150,
+          "metrics": {
+            "loss": 0.115131557,
+            "exact_accuracy": 0.875
+          }
+        },
+        {
+          "step": 200,
+          "metrics": {
+            "loss": 0.134886891,
+            "exact_accuracy": 0.875
+          }
+        },
+        {
+          "step": 250,
+          "metrics": {
+            "loss": 0.141823202,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 300,
+          "metrics": {
+            "loss": 0.147712544,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 350,
+          "metrics": {
+            "loss": 0.151300997,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 400,
+          "metrics": {
+            "loss": 0.154654056,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 450,
+          "metrics": {
+            "loss": 0.159450457,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 500,
+          "metrics": {
+            "loss": 0.162707701,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 550,
+          "metrics": {
+            "loss": 0.166080162,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 600,
+          "metrics": {
+            "loss": 0.169321075,
+            "exact_accuracy": 0.916666667
+          }
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "x=1,y=0,a=L,b=1>",
+          "expected": "1,0;",
+          "predicted": "1,0;"
+        },
+        {
+          "prompt": "x=3,y=2,a=U,b=1>",
+          "expected": "3,2;",
+          "predicted": "3,2;"
+        },
+        {
+          "prompt": "x=2,y=3,a=R,b=1>",
+          "expected": "2,3;",
+          "predicted": "2,3;"
+        },
+        {
+          "prompt": "x=0,y=1,a=D,b=1>",
+          "expected": "0,1;",
+          "predicted": "0,1;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=1>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=1,y=2,a=R,b=1>",
+          "expected": "1,2;",
+          "predicted": "1,2;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=0>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=2,y=0,a=U,b=0>",
+          "expected": "2,1;",
+          "predicted": "2,1;"
+        }
+      ]
+    },
+    "v2-resume-44": {
+      "schema": 2,
+      "seed": 44,
+      "threads": 2,
+      "batch_size": 16,
+      "baseline_steps": 600,
+      "extra_steps_per_branch": 200,
+      "control_train_seconds": 3.43724862,
+      "growth_train_seconds": 4.24899237,
+      "proposal": "validation-driven rule, not a learned policy",
+      "growth_proposed": true,
+      "proposal_reason": "validation_plateau",
+      "comparison": "equal updates/examples when proposed; not equal CPU time",
+      "growth_accepted": false,
+      "selected_layers": 4,
+      "selected_parameters": 787584,
+      "initial_validation": {
+        "loss": 6.26502466,
+        "exact_accuracy": 0
+      },
+      "baseline_validation": {
+        "loss": 0.169321075,
+        "exact_accuracy": 0.916666667
+      },
+      "control_validation": {
+        "loss": 0.17940557,
+        "exact_accuracy": 0.916666667
+      },
+      "growth_validation": {
+        "loss": 0.180903211,
+        "exact_accuracy": 0.916666667
+      },
+      "replay_retention_accuracy": 1,
+      "retention_scope": "training replay only; no separate old task yet",
+      "test": {
+        "loss": 0.182470322,
+        "exact_accuracy": 0.916666667
+      },
+      "gguf_test_accuracy": 0.916666667,
+      "peak_rss_mib": 176.636719,
+      "resumes": 3,
+      "exports": [
+        {
+          "name": "fixed-control",
+          "f32_max_logit_error": 3.8147e-06,
+          "f16_max_logit_error": 0.00196099,
+          "f16_bytes": 1592576
+        },
+        {
+          "name": "growth-candidate",
+          "f32_max_logit_error": 4.76837e-06,
+          "f16_max_logit_error": 0.000802875,
+          "f16_bytes": 1921824
+        }
+      ],
+      "validation_history": [
+        {
+          "step": 0,
+          "metrics": {
+            "loss": 6.26502466,
+            "exact_accuracy": 0
+          }
+        },
+        {
+          "step": 50,
+          "metrics": {
+            "loss": 0.485726029,
+            "exact_accuracy": 0.708333333
+          }
+        },
+        {
+          "step": 100,
+          "metrics": {
+            "loss": 0.261307478,
+            "exact_accuracy": 0.625
+          }
+        },
+        {
+          "step": 150,
+          "metrics": {
+            "loss": 0.115131557,
+            "exact_accuracy": 0.875
+          }
+        },
+        {
+          "step": 200,
+          "metrics": {
+            "loss": 0.134886891,
+            "exact_accuracy": 0.875
+          }
+        },
+        {
+          "step": 250,
+          "metrics": {
+            "loss": 0.141823202,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 300,
+          "metrics": {
+            "loss": 0.147712544,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 350,
+          "metrics": {
+            "loss": 0.151300997,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 400,
+          "metrics": {
+            "loss": 0.154654056,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 450,
+          "metrics": {
+            "loss": 0.159450457,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 500,
+          "metrics": {
+            "loss": 0.162707701,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 550,
+          "metrics": {
+            "loss": 0.166080162,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 600,
+          "metrics": {
+            "loss": 0.169321075,
+            "exact_accuracy": 0.916666667
+          }
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "x=1,y=0,a=L,b=1>",
+          "expected": "1,0;",
+          "predicted": "1,0;"
+        },
+        {
+          "prompt": "x=3,y=2,a=U,b=1>",
+          "expected": "3,2;",
+          "predicted": "3,2;"
+        },
+        {
+          "prompt": "x=2,y=3,a=R,b=1>",
+          "expected": "2,3;",
+          "predicted": "2,3;"
+        },
+        {
+          "prompt": "x=0,y=1,a=D,b=1>",
+          "expected": "0,1;",
+          "predicted": "0,1;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=1>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=1,y=2,a=R,b=1>",
+          "expected": "1,2;",
+          "predicted": "1,2;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=0>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=2,y=0,a=U,b=0>",
+          "expected": "2,1;",
+          "predicted": "2,1;"
+        }
+      ]
+    },
+    "v2-signal-42": {
+      "schema": 2,
+      "seed": 42,
+      "threads": 2,
+      "batch_size": 16,
+      "baseline_steps": 600,
+      "extra_steps_per_branch": 200,
+      "control_train_seconds": 3.21554368,
+      "growth_train_seconds": 0,
+      "proposal": "validation-driven rule, not a learned policy",
+      "growth_proposed": false,
+      "proposal_reason": "target_reached",
+      "comparison": "equal updates/examples when proposed; not equal CPU time",
+      "growth_accepted": false,
+      "selected_layers": 4,
+      "selected_parameters": 787584,
+      "initial_validation": {
+        "loss": 6.30991936,
+        "exact_accuracy": 0
+      },
+      "baseline_validation": {
+        "loss": 0.00191077951,
+        "exact_accuracy": 1
+      },
+      "control_validation": {
+        "loss": 0.00111210789,
+        "exact_accuracy": 1
+      },
+      "growth_validation": null,
+      "replay_retention_accuracy": 1,
+      "retention_scope": "training replay only; no separate old task yet",
+      "test": {
+        "loss": 0.00110294053,
+        "exact_accuracy": 1
+      },
+      "gguf_test_accuracy": 1,
+      "peak_rss_mib": 172.652344,
+      "resumes": 1,
+      "exports": [
+        {
+          "name": "fixed-control",
+          "f32_max_logit_error": 2.86102e-06,
+          "f16_max_logit_error": 0.000677466,
+          "f16_bytes": 1592576
+        }
+      ],
+      "validation_history": [
+        {
+          "step": 0,
+          "metrics": {
+            "loss": 6.30991936,
+            "exact_accuracy": 0
+          }
+        },
+        {
+          "step": 50,
+          "metrics": {
+            "loss": 0.459445506,
+            "exact_accuracy": 0.708333333
+          }
+        },
+        {
+          "step": 100,
+          "metrics": {
+            "loss": 0.269093692,
+            "exact_accuracy": 0.666666667
+          }
+        },
+        {
+          "step": 150,
+          "metrics": {
+            "loss": 0.217045128,
+            "exact_accuracy": 0.75
+          }
+        },
+        {
+          "step": 200,
+          "metrics": {
+            "loss": 0.076881133,
+            "exact_accuracy": 0.916666667
+          }
+        },
+        {
+          "step": 250,
+          "metrics": {
+            "loss": 0.0146872625,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 300,
+          "metrics": {
+            "loss": 0.00888433401,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 350,
+          "metrics": {
+            "loss": 0.00551107386,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 400,
+          "metrics": {
+            "loss": 0.00421005907,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 450,
+          "metrics": {
+            "loss": 0.00330491108,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 500,
+          "metrics": {
+            "loss": 0.00272605568,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 550,
+          "metrics": {
+            "loss": 0.00228954921,
+            "exact_accuracy": 1
+          }
+        },
+        {
+          "step": 600,
+          "metrics": {
+            "loss": 0.00191077951,
+            "exact_accuracy": 1
+          }
+        }
+      ],
+      "examples": [
+        {
+          "prompt": "x=1,y=0,a=L,b=1>",
+          "expected": "1,0;",
+          "predicted": "1,0;"
+        },
+        {
+          "prompt": "x=3,y=2,a=U,b=1>",
+          "expected": "3,2;",
+          "predicted": "3,2;"
+        },
+        {
+          "prompt": "x=2,y=3,a=R,b=1>",
+          "expected": "2,3;",
+          "predicted": "2,3;"
+        },
+        {
+          "prompt": "x=0,y=1,a=D,b=1>",
+          "expected": "0,1;",
+          "predicted": "0,1;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=1>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=1,y=2,a=R,b=1>",
+          "expected": "1,2;",
+          "predicted": "1,2;"
+        },
+        {
+          "prompt": "x=0,y=0,a=W,b=0>",
+          "expected": "0,0;",
+          "predicted": "0,0;"
+        },
+        {
+          "prompt": "x=2,y=0,a=U,b=0>",
+          "expected": "2,1;",
+          "predicted": "2,1;"
+        }
+      ]
+    }
+  },
+  "uninterrupted_elapsed_seconds": {
+    "v2-42": 16.45,
+    "v2-44": 28.51
+  },
+  "previous_seed44_elapsed_seconds": 19.97,
+  "timing_limit": "Shared laptop; current lifecycle adds validation/checkpoint work. Equal updates are not equal time; this is not an isolated speed benchmark.",
+  "verification_source_sha256": {
+    "experiments/adaptive-llama/src/main.cpp": "cbf8b7bf0172c51dfc2b6c7308a97d9eeb7c666779638b8f26f35b101623c3b3",
+    "experiments/adaptive-llama/src/experiment.h": "3e930ea64302ac9e858620eb0feb9c4b731d9f8357176ca3443cf1922a546b5c",
+    "experiments/adaptive-llama/tools/run.sh": "3b11a5b61adad72ecb8dae6b1101d71fd563cfb438f4c86965b6e1119f4757aa",
+    "experiments/adaptive-llama/tools/build.sh": "f89c0b5eee26cb939b0b90d06e74e53fe361cd6cd77eefd958bb7eec922cb795",
+    "experiments/adaptive-llama/tools/setup-headers.sh": "d1510fdd5f7b661b3667cc82930a8713f211db18041c0d86c8f098c88967a7c5",
+    "experiments/adaptive-llama/tests/check-report.cjs": "0f0233352dd13b9860a4202458ed1b853173131dd13b343fb39388c594d85382",
+    "experiments/adaptive-llama/ui/report.html": "494e923422845b2ece34eaa48bad2d188a737e8cea9d336ec014a728e290ab58",
+    "experiments/adaptive-llama/headers.sha256": "847632d5e885f4006918a8848a46387bf0950a47d5347ef5ce6ce7cd0b780f36",
+    "experiments/adaptive-llama/README.md": "c8011cb8fa8d852846d8473f25e34087c7d4062e5d800734493e1a48f79106ae",
+    "docs/ADAPTIVE_LLAMA_PLAN.md": "e125f160d31859ef1db31208dcf1caabacd915241b3f5d08024fd6f24d2175dc"
+  },
+  "final_binary_sha256": "07e511d2a4e236efdc21fe353fb4a5fd1c76e638224a8ae11b4bb517589987a1",
+  "run_artifact_sha256": {
+    "artifacts/adaptive-llama/v2-42/baseline.pt": "09715e2b4a18774a739f5e77f42df3f9bbf308620afc98f3e9625b6330501ee9",
+    "artifacts/adaptive-llama/v2-42/episodes.jsonl": "2424a4d4586c02c5274099cfb703dca91a68a0a31fd5a0f381bfa3fc030efdde",
+    "artifacts/adaptive-llama/v2-42/fixed-control-f16.gguf": "ba282df71dd901fe9f06ba6e4012e7854435aee60b687d0adbe9be0556b5b1b9",
+    "artifacts/adaptive-llama/v2-42/fixed-control-f32.gguf": "48c68df29e9e17e789363c0f50b1de0c36b6b1a06b3ed54ddcbb10da66518b92",
+    "artifacts/adaptive-llama/v2-42/fixed-control.pt": "7257d8bad9dd489474b5dc68342e6eb9fc462da876849d67e66b66fb099f90ea",
+    "artifacts/adaptive-llama/v2-42/selected-f16.gguf": "ba282df71dd901fe9f06ba6e4012e7854435aee60b687d0adbe9be0556b5b1b9",
+    "artifacts/adaptive-llama/v2-42/selected.pt": "87157c0809715a334bb8c5694f9827b9aa2516cf20eb58522679ab35cd6bc521",
+    "artifacts/adaptive-llama/v2-42/state.pt": "c7b73ed01e31633a1284ec112adc3266c576d42c15ea6aaecf4c09c4334b21ba",
+    "artifacts/adaptive-llama/v2-42/summary.json": "e8864044117c112cb67a7be0ea66803848338554bcb383359279fa18fc91a954",
+    "artifacts/adaptive-llama/v2-44/baseline.pt": "7c0cd5d79501b975f8e4d863cfff960bdfd458737928c185be8cbba5fec564b9",
+    "artifacts/adaptive-llama/v2-44/episodes.jsonl": "2424a4d4586c02c5274099cfb703dca91a68a0a31fd5a0f381bfa3fc030efdde",
+    "artifacts/adaptive-llama/v2-44/fixed-control-f16.gguf": "45f5e286393ec267eb55cdb918906b69d939ab08f01cf1c0d694a138f6c29d70",
+    "artifacts/adaptive-llama/v2-44/fixed-control-f32.gguf": "13c1bceb22ef3f05aa58e0f127c42ce5095a06e55e47602660587466698a18f6",
+    "artifacts/adaptive-llama/v2-44/fixed-control.pt": "b6cd43b2e42278acaa98029c2881d2e4f0819a3079e232c6d23226c4ffcf3ed0",
+    "artifacts/adaptive-llama/v2-44/growth-candidate-f16.gguf": "865030fa262bb6fd930790163ff9dad4062efbeb75eb89fb0522a3794580bb23",
+    "artifacts/adaptive-llama/v2-44/growth-candidate-f32.gguf": "7641ac8556cb82d1eb4e2f1c148a260c81445cef19bfbf038283429b67e08c20",
+    "artifacts/adaptive-llama/v2-44/growth-candidate.pt": "1e0d71236de979f718819867177c4bedc973e9153a2f1f1e10d827b6d4d40fae",
+    "artifacts/adaptive-llama/v2-44/selected-f16.gguf": "45f5e286393ec267eb55cdb918906b69d939ab08f01cf1c0d694a138f6c29d70",
+    "artifacts/adaptive-llama/v2-44/selected.pt": "97de63865be84ce94e56d102f2945a4538796ecacd5fedac322a6c87760e43f2",
+    "artifacts/adaptive-llama/v2-44/state.pt": "f67d58257686553dbce9c565064f155df8ce51c43e24f3ffa181fec22f906f8d",
+    "artifacts/adaptive-llama/v2-44/summary.json": "a0d5df762ae2239409feeb6471875f6aef2cf2f7e5adfeb1266867ea61b33d42",
+    "artifacts/adaptive-llama/v2-resume-44/baseline.pt": "66a31c4833569aca0f0241d973ee913b81306fba954eec92084f83c0a9bb96f1",
+    "artifacts/adaptive-llama/v2-resume-44/episodes.jsonl": "2424a4d4586c02c5274099cfb703dca91a68a0a31fd5a0f381bfa3fc030efdde",
+    "artifacts/adaptive-llama/v2-resume-44/fixed-control-f16.gguf": "45f5e286393ec267eb55cdb918906b69d939ab08f01cf1c0d694a138f6c29d70",
+    "artifacts/adaptive-llama/v2-resume-44/fixed-control-f32.gguf": "13c1bceb22ef3f05aa58e0f127c42ce5095a06e55e47602660587466698a18f6",
+    "artifacts/adaptive-llama/v2-resume-44/fixed-control.pt": "c00526f10408c71f9490a057b54878115d47d10c241efc55eb969bcbc2b6b099",
+    "artifacts/adaptive-llama/v2-resume-44/growth-candidate-f16.gguf": "865030fa262bb6fd930790163ff9dad4062efbeb75eb89fb0522a3794580bb23",
+    "artifacts/adaptive-llama/v2-resume-44/growth-candidate-f32.gguf": "7641ac8556cb82d1eb4e2f1c148a260c81445cef19bfbf038283429b67e08c20",
+    "artifacts/adaptive-llama/v2-resume-44/growth-candidate.pt": "e88536f61a53a4d7a73a589a789c9e52e348869d8abbfed821884bce96a4390d",
+    "artifacts/adaptive-llama/v2-resume-44/selected-f16.gguf": "45f5e286393ec267eb55cdb918906b69d939ab08f01cf1c0d694a138f6c29d70",
+    "artifacts/adaptive-llama/v2-resume-44/selected.pt": "b383443e6c792c503abdcbb64329aa8cdbcec8eea64551a69cf423f1ebed39e6",
+    "artifacts/adaptive-llama/v2-resume-44/state.pt": "978723f5189e18eb77910587046079a9fcfbd918d66322fb1456a1fe09fad78f",
+    "artifacts/adaptive-llama/v2-resume-44/summary.json": "0dd42363e572c67dbcd05d7de2e0bc96be1155eda1ff30e0b8d830727d22f622",
+    "artifacts/adaptive-llama/v2-signal-42/baseline.pt": "3f336e63561d83e7b09884370bf61c94c7e050e376f91667da6878dc26ac5538",
+    "artifacts/adaptive-llama/v2-signal-42/episodes.jsonl": "2424a4d4586c02c5274099cfb703dca91a68a0a31fd5a0f381bfa3fc030efdde",
+    "artifacts/adaptive-llama/v2-signal-42/fixed-control-f16.gguf": "ba282df71dd901fe9f06ba6e4012e7854435aee60b687d0adbe9be0556b5b1b9",
+    "artifacts/adaptive-llama/v2-signal-42/fixed-control-f32.gguf": "48c68df29e9e17e789363c0f50b1de0c36b6b1a06b3ed54ddcbb10da66518b92",
+    "artifacts/adaptive-llama/v2-signal-42/fixed-control.pt": "040b56ec1e1091747c7425e9cc846cbebc3cd2b7e9118d93a101b5bc16bf863f",
+    "artifacts/adaptive-llama/v2-signal-42/selected-f16.gguf": "ba282df71dd901fe9f06ba6e4012e7854435aee60b687d0adbe9be0556b5b1b9",
+    "artifacts/adaptive-llama/v2-signal-42/selected.pt": "ac26a15e43d93695f288478061f80b85ef6b4400eeef402ac1a3cc7bbad289a8",
+    "artifacts/adaptive-llama/v2-signal-42/state.pt": "1a4c0a32d1ff7bac54e7d28f72a636d958aac3eb315ebf9980aa3d3a6764a2b2",
+    "artifacts/adaptive-llama/v2-signal-42/summary.json": "f9cb2f1172271b05905897e994d4930114c35da1ee5815cddcebf8df98a5795b"
+  }
+}
