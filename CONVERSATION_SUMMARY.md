@@ -1,4 +1,4 @@
-# MyScoutee AI — Research Conversation Summary
+# AI Pilot — Research Conversation Summary
 
 Prepared on 2026-10-11. This document summarizes the supplied discussions in English. It records research intentions and proposals, not an implemented architecture or verified experimental results. External research claims mentioned in the conversations have not been independently revalidated here.
 
@@ -17,7 +17,7 @@ The request contained four link entries. Entries 3 and 4 have the same URL, so t
 
 The first discussion moves from Higgsfield profile rewards to lessons from using AI across unfamiliar domains. The user describes adapting two books into a short film, using Astra and FFmpeg because local GPU limitations prevented using DaVinci Resolve. The purpose was learning and experimentation. Reported difficulties included continuity, reference handling, narration, prompt limits, and incomplete production tooling.
 
-Parallel work on MyScoutee's shared-source monolith and microservice builds reinforced the importance of repeatable, measurable engineering. These experiences motivated interest in models that retain experience and improve their capabilities.
+Parallel work on an unrelated shared-source monolith and microservice system reinforced the importance of repeatable, measurable engineering. These experiences motivated interest in models that retain experience and improve their capabilities.
 
 Three concepts were distinguished:
 

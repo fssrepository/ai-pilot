@@ -1,6 +1,36 @@
 # Minimal Adaptive Intelligence — Research Plan
 
-Date: 2026-10-11. Status: research proposal, not an implemented or validated architecture.
+Date: 2026-10-11. Status: **bounded prototype implementation and assessment complete**.
+
+## Current implementation and evidence
+
+The [Repair Graph experiment](../experiments/alternative-architecture/README.md)
+now implements the prototype's six-step sequence below, including the previously
+missing retention, automatic context routing, active inquiry and reusable
+abstraction gates. See the [current English results](CONTINUAL_INQUIRY_RESULTS.md),
+[PDF](CONTINUAL_INQUIRY_RESULTS.pdf), [frozen v3 protocol](../experiments/alternative-architecture/PROTOCOL_V3.md)
+and [verification](../experiments/alternative-architecture/examples/verification-v3.json).
+
+| Research capability | Concrete bounded implementation |
+| --- | --- |
+| Changeable representation | Parameter fitting, sensor splits, delayed input and composed proposals |
+| Learning how to repair | V2 empirical repair ranking, measured independently against fixed controls |
+| Retention and context recognition | Up to 16 protected learned graphs; routing from new outcomes without task labels |
+| Reusable abstraction learning | Shared accepted graph structures become templates with learned parameter holes |
+| Active inquiry and noise control | Anonymous-source/action selection by hypothesis disagreement; unsupported-source guard; random/error-seeking controls |
+| Inspection, saving and assessment | Exact state restore, decision/graph playback, native tests, repeated measurements and English PDF |
+
+V1's 264 conditions, v2's 648 conditions, and v3's 576 continual windows plus
+288 inquiry conditions are separate recorded experiments. V3's templates save
+search work; active inquiry saves observations at a substantial extra compute
+cost. Neither improvement is presented as a universal speed/intelligence claim.
+
+The broader ambition below remains a research hypothesis. A finite arithmetic
+grammar, window-level routing and deterministic hypothesis elimination do not
+constitute unlimited representation invention, learned curiosity objectives,
+or a general assistant. These are limits of completed implementations, not a
+claim that the four implemented capabilities are absent. Earlier reports remain
+historical and describe the capabilities of their own versions.
 
 ## 1. Objective and corrected scope
 

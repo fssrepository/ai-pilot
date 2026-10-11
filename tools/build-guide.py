@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('source', nargs='?', type=Path, default=ROOT / 'docs/QWEN_PLAYGROUND_GUIDE.md')
 parser.add_argument('--title', default='Qwen3.5-0.8B Playground — Tools and Experiments')
-parser.add_argument('--footer', default='MyScoutee AI | Qwen3.5-0.8B playground | 11 October 2026')
+parser.add_argument('--footer', default='AI Pilot | Qwen3.5-0.8B playground | 11 October 2026')
 parser.add_argument('--cover', type=Path, help='Optional branded cover metadata JSON')
 args = parser.parse_args()
 SOURCE = args.source.resolve()
@@ -120,11 +120,8 @@ def first_page(canvas, document):
     muted = colors.HexColor('#586675')
     line = colors.HexColor('#d9e1e8')
     x, width = 20 * mm, 170 * mm
-    # Same unchanged M mark + yScoutee lockup as the portfolio's official manuals.
-    canvas.drawImage(str(args.cover.parent / cover['logo']), x, 260 * mm,
-                     width=12 * mm, height=12 * mm, preserveAspectRatio=True, mask='auto')
     canvas.setFillColor(navy); canvas.setFont('Guide-Bold', 22)
-    canvas.drawString(x + 12 * mm, 262 * mm, 'yScoutee')
+    canvas.drawString(x, 262 * mm, cover.get('brand', 'AI Pilot'))
     canvas.setFillColor(muted); canvas.setFont('Guide', 9.5)
     canvas.drawString(x, 253 * mm, cover['subtitle'].upper())
     canvas.setStrokeColor(line); canvas.line(x, 248 * mm, x + width, 248 * mm)
@@ -160,6 +157,6 @@ def first_page(canvas, document):
 destination = SOURCE.with_suffix('.pdf')
 document = SimpleDocTemplate(str(destination), pagesize=A4, rightMargin=20*mm, leftMargin=20*mm,
                             topMargin=16*mm, bottomMargin=20*mm,
-                            title=args.title, author='MyScoutee AI')
+                            title=args.title, author='AI Pilot')
 document.build(story, onFirstPage=first_page, onLaterPages=footer)
 print(destination)

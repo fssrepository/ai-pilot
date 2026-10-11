@@ -1,5 +1,10 @@
-# myscoutee-ai
-playground of self-learning AI
+# ai-pilot
+An independent playground for learning systems and model inspection.
+
+Repository: [fssrepository/ai-pilot](https://github.com/fssrepository/ai-pilot).
+The existing checkout was renamed in place to `/home/raxim/workspace/ai-pilot`;
+models, dependencies and Git history were retained. No new download is needed.
+See the [rename record](docs/PROJECT_RENAME.md) for local configuration changes.
 
 [Research conversation summary](CONVERSATION_SUMMARY.md) — English summary of the project's research discussions and proposed direction.
 
@@ -17,7 +22,7 @@ Two independent development directions have English plans:
 | --- | --- | --- |
 | [experiments/qwen](experiments/qwen/README.md) | Existing Qwen chat and internal inspection | Working pretrained reference |
 | [experiments/adaptive-llama](experiments/adaptive-llama/README.md) | Native C++ training, four-to-five-layer growth, GGUF and graph report | Demonstrator complete and closed; measured limitations documented |
-| [experiments/alternative-architecture](experiments/alternative-architecture/README.md) | A different learning architecture | Research plan only |
+| [experiments/alternative-architecture](experiments/alternative-architecture/README.md) | Symbolic representation changes and learned repair selection | Bounded prototype complete: retention, routing, reusable repair templates and active inquiry measured |
 
 Shared runtime dependencies stay in `.venv` and `.tools`; downloaded weights stay
 in `models`. Generated adaptive runs go to `artifacts/adaptive-llama`. These
@@ -71,6 +76,24 @@ Open **[http://127.0.0.1:8090/](http://127.0.0.1:8090/)** while that manual view
 runs. It shows live measurements during training and the final results afterward.
 The offline HTML link above works without a server. To start a new twelve-condition
 campaign, use `run.sh campaign DIRECTORY` as documented in the experiment README.
+
+## Alternative architecture: Repair Graph
+
+The independent C++ prototype now includes a protected graph memory, automatic
+routing from observations, learned reusable repair templates and active inquiry.
+The bounded implementation and its controlled experiments are complete.
+
+- [Current interactive experiment](experiments/alternative-architecture/examples/pilot-v3.html)
+- [English results](docs/CONTINUAL_INQUIRY_RESULTS.md) and [PDF](docs/CONTINUAL_INQUIRY_RESULTS.pdf)
+- [Local viewer](http://127.0.0.1:8091/), started manually with `./experiments/alternative-architecture/tools/start-viewer.sh`
+- [Configuration, examples and historical results](experiments/alternative-architecture/README.md)
+
+V3 records 576 continual-learning windows and 288 inquiry conditions. The graph
+bank recovers old behavior without new search; learned templates reduce search
+work versus the same bank. Active inquiry reaches 100% at eight observations
+versus 89.78% for random inquiry, while requiring substantially more hypothesis
+computation. The report gives all controls, costs and limits. This remains a
+small designed-grammar experiment, not a general assistant or frontier model.
 
 ## Qwen playground
 

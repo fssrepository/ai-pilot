@@ -1,15 +1,33 @@
 {
-  "logo": "myscoutee-m.png",
   "subtitle": "Research Documentation",
   "kicker": "Learning, Memory & Structural Adaptation",
   "title": "Adaptive Llama\nResearch Results",
   "lead": "Changing-world learning, held-out forgetting, compute-budgeted comparisons and an inspectable C++ demonstrator.",
   "metadata": [
-    ["Document ID", "MSC-AI-001"],
-    ["Document version", "0.1.0"],
-    ["Experiment", "Continual learning campaign v1"],
-    ["Status", "Measured research demonstrator"],
-    ["Released", "2026-10-11"],
-    ["Language", "EN"]
-  ]
+    [
+      "Document ID",
+      "AIP-001"
+    ],
+    [
+      "Document version",
+      "0.1.0"
+    ],
+    [
+      "Experiment",
+      "Continual learning campaign v1"
+    ],
+    [
+      "Status",
+      "Measured research demonstrator"
+    ],
+    [
+      "Released",
+      "2026-10-11"
+    ],
+    [
+      "Language",
+      "EN"
+    ]
+  ],
+  "brand": "AI Pilot"
 }

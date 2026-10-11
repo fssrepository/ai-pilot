@@ -2,7 +2,7 @@
 
 ## Installed setup and learning guide
 
-MyScoutee AI • 11 October 2026 • Local Linux CPU playground
+AI Pilot • 11 October 2026 • Local Linux CPU playground
 
 This guide documents the installed playground. Its purpose is to understand
 model analysis tools through small, observable experiments. It does not train
@@ -30,7 +30,7 @@ Do not attribute differences solely to the programming language or runtime.
 
 ## Start and stop
 
-From a terminal in `/home/raxim/workspace/myscoutee-ai`:
+From a terminal in `/home/raxim/workspace/ai-pilot`:
 
 ```bash
 ./tools/start-chat.sh
@@ -183,7 +183,7 @@ outputs take some space. These are disk sizes, not runtime RAM requirements.
 ## Verification on this computer
 
 Host: Intel Core i5-1335U, approximately 16 GB physical RAM, CPU-only inference.
-The existing MyScoutee deployment was not restarted or modified for this setup.
+The unrelated application deployment was not restarted or modified for this setup.
 
 The analysis check used `The capital of Hungary is` (five tokens). It captured
 all 24 decoder outputs and the six expected full-attention layers, each with

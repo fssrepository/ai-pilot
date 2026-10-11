@@ -1,0 +1,33 @@
+{
+  "subtitle": "Research Documentation",
+  "kicker": "Continual Memory & Active Inquiry",
+  "title": "Repair Graph v3\nLearning Across Tasks",
+  "lead": "Protected knowledge, evidence-based routing, learned repair templates and the measured cost of choosing useful observations.",
+  "metadata": [
+    [
+      "Document ID",
+      "AIP-004"
+    ],
+    [
+      "Document version",
+      "0.3.0"
+    ],
+    [
+      "Experiment",
+      "Continual and inquiry pilot"
+    ],
+    [
+      "Status",
+      "Implemented and measured"
+    ],
+    [
+      "Released",
+      "2026-10-11"
+    ],
+    [
+      "Language",
+      "EN"
+    ]
+  ],
+  "brand": "AI Pilot"
+}

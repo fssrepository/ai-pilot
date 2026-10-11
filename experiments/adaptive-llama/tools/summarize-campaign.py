@@ -340,6 +340,6 @@ assessment; Jev is not the JEPA research line. No Jev API or model was used here
 # Keep changed-subset size truthful if the declared split is updated in a future protocol.
 text=text.replace('only six changed-answer',f"only {rows[0]['changed_test_count']} changed-answer")
 source=ROOT/'docs/ADAPTIVE_LLAMA_RESULTS.md';source.write_text(text)
-subprocess.run([sys.executable,str(ROOT/'tools/build-guide.py'),str(source),'--cover',str(ROOT/'docs/brand/adaptive-cover.json'),'--title','Adaptive Llama — Continual Learning Results','--footer','MyScoutee AI | Adaptive Llama results | 11 October 2026'],check=True)
+subprocess.run([sys.executable,str(ROOT/'tools/build-guide.py'),str(source),'--cover',str(ROOT/'docs/brand/adaptive-cover.json'),'--title','Adaptive Llama — Continual Learning Results','--footer','AI Pilot | Adaptive Llama results | 11 October 2026'],check=True)
 print('PASS: 12 unique conditions, split integrity, work budgets, forgetting arithmetic and GGUF parity.')
 print(source)

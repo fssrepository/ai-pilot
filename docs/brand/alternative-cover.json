@@ -1,0 +1,33 @@
+{
+  "subtitle": "Research Documentation",
+  "kicker": "Representations & Learned Repair Selection",
+  "title": "Repair Graph\nAlternative Architecture",
+  "lead": "A bounded C++ experiment in changing symbolic representations and transferring repair experience.",
+  "metadata": [
+    [
+      "Document ID",
+      "AIP-002"
+    ],
+    [
+      "Document version",
+      "0.1.0"
+    ],
+    [
+      "Experiment",
+      "Repair Graph pilot v1"
+    ],
+    [
+      "Status",
+      "Measured first prototype"
+    ],
+    [
+      "Released",
+      "2026-10-11"
+    ],
+    [
+      "Language",
+      "EN"
+    ]
+  ],
+  "brand": "AI Pilot"
+}

@@ -5,7 +5,9 @@ const path = require('node:path');
 const directory = path.resolve(process.argv[2] || 'artifacts/adaptive-llama/continual-01');
 const port = Number(process.argv[3] || 8090);
 if (!Number.isInteger(port) || port < 1024 || port > 65535) throw new Error('Invalid port');
-const template = fs.readFileSync(path.join(__dirname, '../ui/campaign.html'), 'utf8').replace('__REPORT_JSON__', 'null');
+// Optional template lets independent experiments reuse this restricted read-only server.
+const templatePath = process.argv[4] ? path.resolve(process.argv[4]) : path.join(__dirname, '../ui/campaign.html');
+const template = fs.readFileSync(templatePath, 'utf8').replace('__REPORT_JSON__', 'null');
 const server = http.createServer((req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   res.setHeader('X-Content-Type-Options', 'nosniff');

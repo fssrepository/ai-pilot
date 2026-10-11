@@ -204,7 +204,7 @@ void export_gguf(Model& m,const fs::path& path,bool half) {
     auto g=std::unique_ptr<gguf_context,decltype(&gguf_free)>(gguf_init_empty(),gguf_free);
     auto c=std::unique_ptr<ggml_context,decltype(&ggml_free)>(ggml_init({1024*1024,nullptr,true}),ggml_free);
     require(bool(c)&&bool(g),"GGUF allocation failed");
-    gguf_set_val_str(g.get(),"general.architecture","llama");gguf_set_val_str(g.get(),"general.name","MyScoutee adaptive Llama toy world");
+    gguf_set_val_str(g.get(),"general.architecture","llama");gguf_set_val_str(g.get(),"general.name","AI Pilot adaptive Llama toy world");
     gguf_set_val_u32(g.get(),"general.file_type",half?1:0);
     gguf_set_val_u32(g.get(),"llama.context_length",CONTEXT);gguf_set_val_u32(g.get(),"llama.embedding_length",WIDTH);
     gguf_set_val_u32(g.get(),"llama.block_count",m.blocks.size());gguf_set_val_u32(g.get(),"llama.feed_forward_length",FF);

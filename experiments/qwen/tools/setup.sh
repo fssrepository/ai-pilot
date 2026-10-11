@@ -17,7 +17,7 @@ if [[ -f requirements.lock.txt ]]; then
 else
   .venv/bin/python -m pip install -r requirements.txt
 fi
-.venv/bin/python -m ipykernel install --prefix "$PWD/.venv" --name myscoutee-qwen --display-name 'MyScoutee Qwen (CPU)'
+.venv/bin/python -m ipykernel install --prefix "$PWD/.venv" --name ai-pilot-qwen --display-name 'AI Pilot Qwen (CPU)'
 .venv/bin/python tools/download_model.py
 printf '\nReady. Start manually: ./tools/start-playground.sh\n'
 

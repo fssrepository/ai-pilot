@@ -17,7 +17,7 @@ are retained separately as historical evidence.
 The requested demonstrator's development and verification are complete: changing
 rules, forgetting measurements, twelve fixed/adaptive comparison runs, live and
 offline visualization, GGUF deployment in the official llama.cpp chat, and the
-English PDF with the MyScoutee M cover. Native checkpoint/resume, export parity
+English PDF with the AI Pilot cover. Native checkpoint/resume, export parity
 and browser checks passed; see the [verification record](examples/continual-verification.json).
 
 This closes the bounded experiment, with no remaining implementation item in
