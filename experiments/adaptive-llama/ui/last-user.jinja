@@ -1,0 +1,5 @@
+{%- set last = messages[-1] -%}
+{%- if last['role'] != 'user' -%}
+{{- raise_exception('Send one world prompt as the last user message.') -}}
+{%- endif -%}
+{{- last['content'] | trim -}}
